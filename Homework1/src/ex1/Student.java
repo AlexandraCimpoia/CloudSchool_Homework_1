@@ -1,12 +1,14 @@
 package ex1;
 
-public class Student {
-    private String name;
-    private int age;
+import java.io.Serializable;
 
-    public Student(String name, int age) {
+public class Student implements Serializable {
+    private String name;
+    private float grade;
+
+    public Student(String name, float grade) {
         this.name = name;
-        this.age = age;
+        this.grade = grade;
     }
 
     public String getName() {
@@ -17,19 +19,21 @@ public class Student {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public float getGrade() {
+        return grade;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setGrade(float grade) {
+        this.grade = grade;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
+                ", grade=" + grade +
                 '}';
     }
+
+
 }
