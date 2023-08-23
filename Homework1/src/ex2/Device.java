@@ -21,7 +21,7 @@ public class Device implements Runnable{
                 Document document = new Document("Document " + i);
                 System.out.println("Device " + deviceId + " produced document " + document.getDocumentId() + " with title " + document.getDocumentTitle());
                 synchronized (documentsQueue) {
-                    while (documentsQueue.size() >= 5) { //The queue should be limited to 5 documents (let’s call it a hardware limit)
+                    while (documentsQueue.size() >= 5) {
                         documentsQueue.wait();
                     }
                     documentsQueue.add(document);

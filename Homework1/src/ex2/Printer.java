@@ -15,15 +15,15 @@ public class Printer implements Runnable{
         try {
             while (true) {
                 Document document;
-                synchronized (documentsQueue) { //synchronized block -> only one thread at a time can access the documentsQueue
+                synchronized (documentsQueue) {
                     while (documentsQueue.isEmpty()) {
                         documentsQueue.wait();
                     }
-                    document = documentsQueue.poll(); //dequeues a document
-                    documentsQueue.notifyAll(); //printer thread notifies all waiting threads (devices) that there is space available in the queue
+                    document = documentsQueue.poll();
+                    documentsQueue.notifyAll();
                 }
                 System.out.println("Printer printed document " + document.getDocumentId() + " with title " + document.getDocumentTitle());
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
